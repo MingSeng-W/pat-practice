@@ -21,7 +21,7 @@ int findMaxSequance(int a[],int n){
 int main(int argc, char const *argv[])
 {
 	int b=0;
-	int c=1000000;
+	int c=100000000;
 	int a[]={23,-24,646,25,-244,-53,-756,-35,4325,-435,75,-979,543};
 	do{
 		
