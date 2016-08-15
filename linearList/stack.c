@@ -1,21 +1,18 @@
 // 2.2堆栈
 #include "stdio.h"
-#define MAXSIZE 1000
-
-// 堆栈的顺序实现
-
+#include "stdlib.h"
 
 
 //堆栈的链表实现
-
+typedef int ElemType;
 typedef struct Snode *PtrlToSNode;
 struct Snode
 {
-	ElemType data
+	ElemType data;
 	PtrlToSNode next;
 };
-
 typedef PtrlToSNode Stack;
+
 
 
 Stack createStack(){
@@ -26,7 +23,7 @@ Stack createStack(){
 }
 //判空
 bool Empty(Stack S){
-	return (S->next==NULL)
+	return (S->next==NULL);
 }
 
 
@@ -49,10 +46,25 @@ ElemType pop(Stack S){
 		return NULL;
 	}else{
 	S->next=tmp->next;
-	returndata=tmp->data;
+	ElemType returndata=tmp->data;
 	free(tmp);
 	return returndata;
 	}
 	
 }
+
+int main(int argc, char const *argv[])
+{		Stack s;
+
+	s=createStack();
+	push(s,2);
+	push(s,3);
+	int result1=pop(s);
+	int result2=pop(s);
+	printf("%d %d\n",result1,result2 );
+
+
+}
+//改文件的可执行文件为stack
+
 

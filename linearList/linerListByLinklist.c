@@ -1,3 +1,4 @@
+
 #include "stdio.h"
 typedef stuct Lnode *ptrloNode;
 typedef ptrloNode List;
