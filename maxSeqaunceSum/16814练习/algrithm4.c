@@ -18,3 +18,5 @@ int findMaxSequance(int a[],int n){
 	}
 	return maxSum;
 }
+
+
