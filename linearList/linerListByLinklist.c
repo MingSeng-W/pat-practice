@@ -3,11 +3,14 @@
 typedef stuct Lnode *ptrloNode;
 typedef ptrloNode List;
 typedef ptrloNode Position;
+typedef int ElemType;
 struct Lnode
 {
 	ElemType data;
 	ptrloNode next;
 };
+
+
 
 // 查找
 
@@ -52,5 +55,14 @@ bool insert(List L,Position P,ElemType x){
 		tmp->next=P;
 		pre->next=tmp;
 		return true;
+	}
+
+	int main(int argc, char const *argv[])
+	{	
+		
+
+
+		
+		return 0;
 	}
 
