@@ -1,18 +1,22 @@
-#include "stdio.h"
-int main(int argc, char const *argv[])
-{
-	int n;
-	scanf("%d",&n);
-	int a[n];
-	for (int i = 0; i < n; ++i)
-	{
-		int b;
-		scanf("%d",&b);
-		a[i]=b;
-	}
-	for (int i = 0; i < n; ++i)
-	{
-		printf("%d\n", a[i]);
-	}
-	return 0;
+#include <stdio.h>
+int main(){
+    int num;
+    int i=0;
+    int arr[10];
+    for (int i = 0; i < 10; ++i)
+    {
+      arr[i]=0;
+    }
+   while(1){
+        scanf("%d",&num);
+        char c=getchar();
+        arr[i++]=num;
+        if(c=='\n'){
+            break;
+        }
+   }
+   for(int i=0;i<10;i++){
+    printf("%d\n",arr[i]);
+   }
+  return 0;
 }
