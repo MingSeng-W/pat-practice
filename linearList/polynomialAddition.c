@@ -131,6 +131,7 @@ void myPrint(Polynomial p){
 }
 
 
+
 int main(int argc, char const *argv[])
 {
 	Polynomial p1,p2,p3;
