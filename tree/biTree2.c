@@ -15,6 +15,7 @@ typedef struct BiNode *BiTree;
 typedef int  ElememtType;
 typedef int bool;
 #define true 1;
+#define false 0;
 
 struct BiNode{
     ElememtType data;
@@ -25,6 +26,70 @@ struct BiNode{
 typedef BiTree ElemType;
 
 
+//队列
+typedef int Postion;
+typedef BiTree ElemtType;
+struct Qnode
+{
+    Postion front;
+    Postion rear;
+    ElemtType *data;
+    int maxsize;
+};
+typedef struct Qnode *Queue;
+//创建循环队列
+Queue createQueue(int maxsize){
+    Queue q;
+    q=(Queue)malloc(sizeof(struct Qnode));
+    q->data=(ElemtType*)malloc(maxsize*sizeof(ElemtType));
+    q->front=0;
+    q->rear=0;
+    q->maxsize=maxsize;
+    return q;
+}
+
+//判空
+
+bool IsEmpty(Queue q){
+    return (q->rear==q->front);
+    
+}
+//判满
+bool IsFull(Queue q){
+    return((q->rear+1)%q->maxsize==q->front);
+    
+    
+}
+//入队
+bool AddQ(Queue q,ElemtType x){
+    if (IsFull(q))
+    {
+        printf("%s\n", "队列已满");
+        return false;
+    }else{
+        q->rear=(q->rear+1)%q->maxsize;
+        q->data[q->rear]=x;
+        return true;
+    }
+    
+}
+//出队
+
+ElemtType Delete(Queue q){
+    ElemtType tmp;
+    if (IsEmpty(q))
+    {
+        printf("%s\n","队列为空" );
+        return NULL;
+    }else{
+        
+        
+        q->front=(q->front+1)%q->maxsize;
+        tmp=q->data[q->front];
+        return tmp;
+        
+    }
+}
 
 //堆栈
 typedef struct Snode *PtrlToSNode;
@@ -128,7 +193,7 @@ void preOrderTraverse(BiTree T){
             T=pop(s);
             T=T->right;
         }
-       
+        
         
     }
     
@@ -148,12 +213,34 @@ int BitreeHeight(BiTree T){
 }
 
 
+//二叉树的层次遍历
+
+void levelTraverse(BiTree T){
+    Queue q;
+    q=createQueue(100);
+    AddQ(q, T);
+    while (!IsEmpty(q)) {
+        T=Delete(q);
+        printf("%d\n",T->data);
+        if (T->left) {
+             AddQ(q, T->left);
+        }
+        if (T->right) {
+             AddQ(q, T->right);
+        }
+       
+       
+    }
+}
+
+
+
 
 
 int main(){
     BiTree T;
     T=createBiTree();
-    preOrderTraverse(T);
+    levelTraverse(T);
     printf("%d\n",BitreeHeight(T));
     
     return 0;
