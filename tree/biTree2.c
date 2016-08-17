@@ -94,8 +94,8 @@ BiTree createBiTree(){
 
 
 
-//二叉树的非递归遍历,先序遍历
-void preOrderTraverse(BiTree T){
+//二叉树的非递归遍历,中序遍历
+void inOrderTraverse(BiTree T){
     Stack s;
     s=createStack();
     while (T||!Empty(s)) {
@@ -113,13 +113,48 @@ void preOrderTraverse(BiTree T){
     
 }
 
+//二叉树的非递归遍历,先序遍历
+void preOrderTraverse(BiTree T){
+    Stack s;
+    s=createStack();
+    
+    while (T||!Empty(s)) {
+        while (T) {
+            printf("%d\n",T->data);
+            push(s, T);
+            T=T->left;
+        }
+        if (!Empty(s)) {
+            T=pop(s);
+            T=T->right;
+        }
+       
+        
+    }
+    
+}
+
+//求树的高度
+int BitreeHeight(BiTree T){
+    int lh,rh,maxh;
+    if (T) {
+        lh=BitreeHeight(T->left);
+        rh=BitreeHeight(T->right);
+        maxh=(rh>lh)?rh:lh;
+        return maxh+1;
+    }else{
+        return 0;
+    }
+}
+
 
 
 
 int main(){
     BiTree T;
     T=createBiTree();
-    preOrderTraverse( T);
+    preOrderTraverse(T);
+    printf("%d\n",BitreeHeight(T));
     
     return 0;
 }
